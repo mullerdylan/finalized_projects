@@ -1,11 +1,13 @@
 import cv2
 import pickle
 import numpy as np 
+import datetime
 
 width,height = 175,100
-
+log = []
 def checkspace(imgpro): 
     spacecounter = 0
+    timestamp = datetime.datetime.now()
     for pos in posList:
         x,y = pos
 
@@ -14,9 +16,17 @@ def checkspace(imgpro):
         count = cv2.countNonZero(imgcrop)
         cv2.putText(img,str(count),(x,y+height-10), cv2.FONT_HERSHEY_SCRIPT_SIMPLEX, 1,(255,255,255))
         if count <1000:
+            available = 0
             color = (0,255,0)
+            logger = F'pos: {posList.index(pos)}, time: {timestamp} , available: {available}'
+            print(logger)
+            log.append(logger)
             spacecounter +=1
         else: 
+            available = 1
+            logger = F'pos: {posList.index(pos)},time: {timestamp} , available: {available}'
+            print(logger)
+            log.append(logger)
             color = (0,0,255)
         cv2.rectangle(img,pos,(pos[0]+width,pos[1]+height),color,2)
     cv2.putText(img,f"Spaces Available: {spacecounter}",(100,100), cv2.FONT_HERSHEY_PLAIN, 2,(255,255,255))
