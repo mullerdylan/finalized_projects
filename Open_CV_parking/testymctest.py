@@ -18,4 +18,3 @@ refresh_rate_min = 5
 frames = round(delta/(refresh_rate_min*60))
 print(frames)
 print(frame_count('7:00:38','18:35:38',5))
-print(datetime.datetime.strptime(str(datetime.datetime.now()),'%H:%M:%S'))
