@@ -24,7 +24,7 @@ with open('carparkpos','rb') as f:
         posList = pickle.load(f)
 
 while True:
-    img = cv2.imread('parking_im.jpg')
+    img = cv2.imread(0)
     imggray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     imgblur = cv2.GaussianBlur(imggray,(3,3),1) 
     imgthreshold = cv2.adaptiveThreshold(imgblur,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
