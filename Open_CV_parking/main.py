@@ -47,8 +47,8 @@ with open('carparkpos','rb') as f:
 
 vid = cv2.VideoCapture(1)
 # Function format: (start time, End time, minutes between frame )
-inerval_min = .1
-max_frame = frame_count('7:00:00','7:01:00',inerval_min)
+inerval_min = .5
+max_frame = frame_count('7:00:00','17:00:00',inerval_min)
 
 while len(availability_list)<max_frame*len(posList):
     ret, frame = vid.read()

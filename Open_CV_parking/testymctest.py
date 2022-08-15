@@ -2,10 +2,9 @@ import os
 import datetime
 date = datetime.datetime.now().date()
 # print(os.path.exists(F'Logs/log_{date}.csv'))
-# if os.path.exists(F'log_{date}.csv') ==True:
-#     print('true')
-# else: 
-#     print('aaaaaaah')
+if os.path.isdir('Logs2') ==False:
+    os.makedirs('Logs2')
+print('isfine')
 # print(os.path.exists(F'log_{date}.csv'))
 # import datetime
 # def frame_count(start,end,refresh_rate_min):
@@ -23,6 +22,6 @@ date = datetime.datetime.now().date()
 # print(frames)
 # print(frame_count('7:00:38','18:35:38',5))
 
-from event_logger import frame_count
-inerval_min = 5
-print(frame_count('7:00:00','7:01:00',inerval_min))
+# from event_logger import frame_count
+# inerval_min = 5
+# print(frame_count('7:00:00','7:01:00',inerval_min))
