@@ -2,8 +2,8 @@ import os
 import datetime
 date = datetime.datetime.now().date()
 # print(os.path.exists(F'Logs/log_{date}.csv'))
-if os.path.isdir('Logs2') ==False:
-    os.makedirs('Logs2')
+if os.path.isdir('Logs') ==False:
+    os.makedirs('Logs')
 print('isfine')
 # print(os.path.exists(F'log_{date}.csv'))
 # import datetime

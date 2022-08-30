@@ -20,8 +20,7 @@ dsn = creds.dsn
 #ENSURE TO CHANGE THIS TO ABOLUTE PATH
 cx_Oracle.init_oracle_client(lib_dir=r"C:\Users\r17kc0\Downloads\instantclient_19_11")
 # Establish the database connection
-connection = cx_Oracle.connect(user=sys_user, password=password,
-                               dsn=dsn)
+connection = cx_Oracle.connect(user=sys_user, password=password,dsn=dsn)
 s = sched.scheduler(time.time, time.sleep)
 
 #TKINTER set up files

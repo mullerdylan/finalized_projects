@@ -1,10 +1,10 @@
-from asyncio.log import logger
 import cv2
 import pickle
 import numpy as np 
 import datetime
 import pandas as pd
 import os
+from Twilio_service_class import  twilio_message_send
 
 width,height = 175,100
 log = []
@@ -12,6 +12,9 @@ parking_position_list = []
 timestamp_list = []
 availability_list = []
 date = datetime.datetime.now().date()
+
+if os.path.isdir('Logs') ==False:
+    os.makedirs('Logs')
 
 def frame_count(start,end,refresh_rate_min):
     delta = (datetime.datetime.strptime(end,'%H:%M:%S') - datetime.datetime.strptime(start,'%H:%M:%S')).total_seconds()
@@ -67,9 +70,17 @@ while len(availability_list)<max_frame*len(posList):
 
     if cv2.waitKey(round(inerval_min*60*1000)) & 0xFF == ord('q'):
         break
+
 # Logic for storing log after program finishes running 
 dict = {'pos' : parking_position_list,'timestamps' : timestamp_list , 'availabilty' :availability_list }
 df = pd.DataFrame(dict) 
+
+#responsible for sending sms if configured
+try:
+    twilio_message_send(df,'171119871283')
+except:
+    pass
+
 if os.path.exists(F'Logs\log_{date}.csv') ==True:
     df.to_csv(F"Logs\log_{date}_alt.csv", index=False)
 else: 
